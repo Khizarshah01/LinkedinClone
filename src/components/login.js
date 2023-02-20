@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import { connect, Connect } from "react-redux";
 // z-index: -1;
 const Login = (props)=>
 {
@@ -160,4 +161,10 @@ right: -150px;
   }
   `;
 
-export default Login;
+const mapStateToProps =(state)=>{
+  return();
+};
+
+const mapDispatchToProps = (dispatch)=>({});
+
+const default connect(mapStateToProps, mapDispatchToProps)(Login);
