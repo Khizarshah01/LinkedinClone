@@ -1,10 +1,16 @@
 import styled from "styled-components"
 import { connect, Connect } from "react-redux";
-// z-index: -1;
+import { Navigate } from 'react-router-dom';
+
+import { signInApi } from "../actions";
 const Login = (props)=>
 {
     return (
       <Container>
+
+        {
+          props.user && <Navigate to= "/home" />
+        }
         <Nav>
             <a href="/"><img src="/images/login-logo.svg" alt=" " /></a>
         <div>
@@ -18,7 +24,7 @@ const Login = (props)=>
                 <img src="/images/login-hero.svg" alt=" "/>
             </Hero>
             <Form>
-                <Google>
+                <Google onClick={()=>props.signIn()}>
                     <img src="/images/google.svg" alt=" "/>
                 Sign in with Google
                 </Google>
@@ -162,9 +168,15 @@ right: -150px;
   `;
 
 const mapStateToProps =(state)=>{
-  return();
+  return{
+    user: state.userState.user,
+  }
 };
 
-const mapDispatchToProps = (dispatch)=>({});
+const mapDispatchToProps = (dispatch)=>({
 
-const default connect(mapStateToProps, mapDispatchToProps)(Login);
+  signIn: () => dispatch(signInApi()),
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
