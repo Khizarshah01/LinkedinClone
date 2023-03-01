@@ -170,7 +170,7 @@ right: -150px;
 const mapStateToProps =(state)=>{
   return{
     user: state.userState.user,
-  }
+  };
 };
 
 const mapDispatchToProps = (dispatch)=>({
